@@ -1,0 +1,64 @@
+{% extends "base.html"%}
+
+{% block content %}
+<h1>Active</h1>
+        <table class="table table-dark">
+            <thead class="thead-dark">
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Description</th>
+            </thead>
+            <tbody>                
+                {% for product in productst %}    
+                
+                        {% set color = '' %}
+                        {% if product.price <= 100 %}
+                            {% set color='background-color:red;' %}
+                        {% elif product["price"] > 100 and product["price"] <= 500: %}
+                        {% set color='background-color:yellow;' %}
+                        {% else: %}
+                            {% set color='' %}
+                        {% endif%}
+                                
+                        <tr style="{{ color }}">
+                            <td>{{ product["name"] }}</td>
+                            <td>{{ product["category"] }}</td>
+                            <td>{{ product["price"] }}</td>
+                            <td><a href="products/{{product['id']}}/1" >Desactivate</a></td>
+                        </tr>      
+
+                {% endfor %}
+            </tbody>
+        </table>
+        <HR>
+            <h1>DesActive</h1>
+            <table class="table table-dark">
+                <thead class="thead-dark">
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>                
+                    {% for productf in productsf %}        
+                    
+                            {% set color = '' %}
+                            {% if productf["price"] <= 100 %}
+                                {% set color='background-color:red;' %}
+                            {% elif productf["price"] > 100 and productf["price"] <= 500: %}
+                            {% set color='background-color:yellow;' %}
+                            {% else: %}
+                                {% set color='' %}
+                            {% endif%}
+                                    
+                            <tr style="{{ color }}">
+                                <td>{{ productf["name"] }}</td>
+                                <td>{{ productf["category"] }}</td>
+                                <td>{{ productf["price"] }}</td>
+                                <td><a href="products/{{productf['id']}}/0" >Activate</a></td>
+                            </tr>      
+                    {% endfor %}
+                </tbody>
+            </table>
+{% endblock %}
