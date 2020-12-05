@@ -80,7 +80,8 @@ def delete_product(pid, valor):
 
     # return redirect(url_for("/products"))  # , products=out["body"]))
     # return get_all_products()
-    return {"ok": out, "message": "Deleted"}
+    # {"ok": out, "message": "Deleted"}
+    return "<script> window.location.href ='/products'; </script>"
 
 
 @ app.route("/aboutme/<name>")
